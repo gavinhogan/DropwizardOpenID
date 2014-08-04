@@ -1,59 +1,42 @@
-# Define the HTTP settings
-http:
-  port: 8080
-  adminPort: 8081
+server:
+#  softNofileLimit: 1000
+#  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+    #  port: 8080
+    #- type: https
+    #  port: 8443
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+# this requires the npn-boot library on the JVM's boot classpath
+#    - type: spdy3
+#      port: 8445
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+  adminConnectors:
+    - type: http
+      port: 8081
+    #- type: https
+    #  port: 8444
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
 
-# Define the client settings for connecting to upstream data services
-httpClient:
-  timeout: 60s # Timeout while connecting, reading, or writing (Heroku needs large value for spin-up)
-  timeToLive: 10m # Keep connections open
-  cookiesEnabled: true # Track cookies
-  gzipEnabled: true # Allow for gzipped request and response entities
-  minThreads: 1
-  maxThreads: 128 # Thread pool for JerseyClient's async requests
-
+# Logging settings.
 logging:
 
-  level: WARN
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
 
   # Logger-specific levels.
   loggers:
 
-    # Set specific levels
-    "com.sun.jersey.api.client": DEBUG
-    "com.yammer": INFO
-    "uk.co.froot": DEBUG
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.example.app: DEBUG
 
-  # ...
-  # Settings for logging to stdout.
-  console:
+    org.hibernate.SQL: ALL
 
-    # If true, write log statements to stdout.
-    enabled: true
-
-    # Do not display log statements below this threshold to stdout.
-    threshold: ALL
-
-  # Settings for logging to a file.
-  file:
-
-    # If true, write log statements to a file.
-    enabled: false
-
-    # Do not write log statements below this threshold to the file.
-    threshold: ALL
-
-    # The file to which current statements will be logged.
-    currentLogFilename: /var/log/example/developer.log
-
-    # When the log file rotates, the archived log will be renamed to this and gzipped. The
-    # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
-    # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
-    archivedLogFilenamePattern: /var/log/example/developer-%d.log.gz
-
-    # The number of archived files to keep.
-    archivedFileCount: 5
-
-    # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
-    timeZone: UTC
-#
+  appenders:
+    - type: console

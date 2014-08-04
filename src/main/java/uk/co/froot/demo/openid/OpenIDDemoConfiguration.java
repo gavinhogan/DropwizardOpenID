@@ -1,8 +1,8 @@
 package uk.co.froot.demo.openid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yammer.dropwizard.client.JerseyClientConfiguration;
-import com.yammer.dropwizard.config.Configuration;
+import io.dropwizard.client.JerseyClientConfiguration;
+import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;

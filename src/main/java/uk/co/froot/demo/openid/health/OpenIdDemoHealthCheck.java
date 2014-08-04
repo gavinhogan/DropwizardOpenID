@@ -10,12 +10,12 @@ package uk.co.froot.demo.openid.health;
  *         
  */
 
-import com.yammer.metrics.core.HealthCheck;
+import com.codahale.metrics.health.HealthCheck;
 
 public class OpenIdDemoHealthCheck extends HealthCheck {
 
   public OpenIdDemoHealthCheck() {
-    super("OpenID Demo");
+    //super("OpenID Demo");
   }
 
   @Override

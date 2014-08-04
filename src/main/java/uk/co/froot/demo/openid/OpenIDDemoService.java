@@ -1,11 +1,18 @@
 package uk.co.froot.demo.openid;
 
-import com.yammer.dropwizard.Service;
-import com.yammer.dropwizard.assets.AssetsBundle;
-import com.yammer.dropwizard.config.Bootstrap;
-import com.yammer.dropwizard.config.Environment;
-import com.yammer.dropwizard.views.ViewBundle;
-import com.yammer.dropwizard.views.ViewMessageBodyWriter;
+
+//import io.dropwizard.configuration;
+//import io.dropwizard.assets.AssetsBundle;
+//import io.dropwizard.config.Bootstrap;
+//import io.dropwizard.config.Environment;
+
+import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
+
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
+import io.dropwizard.views.ViewMessageBodyWriter;
 import org.eclipse.jetty.server.session.SessionHandler;
 import uk.co.froot.demo.openid.auth.openid.OpenIDAuthenticator;
 import uk.co.froot.demo.openid.auth.openid.OpenIDRestrictedToProvider;
@@ -22,7 +29,7 @@ import uk.co.froot.demo.openid.resources.PublicHomeResource;
  * @since 0.0.1
  *         
  */
-public class OpenIDDemoService extends Service<OpenIDDemoConfiguration> {
+public class OpenIDDemoService extends Application<OpenIDDemoConfiguration> {
 
   /**
    * Main entry point to the application
@@ -53,15 +60,15 @@ public class OpenIDDemoService extends Service<OpenIDDemoConfiguration> {
     OpenIDAuthenticator authenticator = new OpenIDAuthenticator();
 
     // Configure environment
-    environment.scanPackagesForResourcesAndProviders(PublicHomeResource.class);
+    environment.jersey().packages("uk.co.froot.demo.openid.resources");
 
     // Health checks
-    environment.addHealthCheck(new uk.co.froot.demo.openid.health.OpenIdDemoHealthCheck());
+    environment.healthChecks().register("open-id-service", new uk.co.froot.demo.openid.health.OpenIdDemoHealthCheck());
 
     // Providers
-    environment.addProvider(new ViewMessageBodyWriter());
-    environment.addProvider(new OpenIDRestrictedToProvider<User>(authenticator, "OpenID"));
+    //environment.jersey().register(new ViewMessageBodyWriter());
+    environment.jersey().register(new OpenIDRestrictedToProvider<User>(authenticator, "OpenID"));
 
     // Session handler
-    environment.setSessionHandler(new SessionHandler());  }
+    environment.servlets().setSessionHandler(new SessionHandler());  }
 }

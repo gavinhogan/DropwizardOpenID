@@ -1,6 +1,6 @@
 package uk.co.froot.demo.openid.views;
 
-import com.yammer.dropwizard.views.View;
+import io.dropwizard.views.View;
 import uk.co.froot.demo.openid.model.BaseModel;
 
 /**

@@ -1,7 +1,7 @@
 package uk.co.froot.demo.openid.resources;
 
 import com.google.common.base.Optional;
-import com.yammer.dropwizard.views.View;
+import io.dropwizard.views.View;
 import org.openid4java.OpenIDException;
 import org.openid4java.consumer.ConsumerException;
 import org.openid4java.consumer.ConsumerManager;

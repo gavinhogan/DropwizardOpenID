@@ -1,7 +1,7 @@
 package uk.co.froot.demo.openid.resources;
 
-import com.yammer.dropwizard.jersey.caching.CacheControl;
-import com.yammer.metrics.annotation.Timed;
+import io.dropwizard.jersey.caching.CacheControl;
+import com.codahale.metrics.annotation.Timed;
 import uk.co.froot.demo.openid.model.BaseModel;
 import uk.co.froot.demo.openid.views.PublicFreemarkerView;
 

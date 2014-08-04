@@ -15,7 +15,7 @@
 
   <!-- Set the version levels for linked dependencies -->
   <properties>
-    <dropwizard.version>0.6.2</dropwizard.version>
+    <dropwizard.version>0.7.0</dropwizard.version>
   </properties>
 
   <build>
@@ -77,34 +77,39 @@
     <!-- Dropwizard framework -->
     <!-- Core functionality -->
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-core</artifactId>
       <version>${dropwizard.version}</version>
     </dependency>
     <!-- Authentication support -->
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-auth</artifactId>
       <version>${dropwizard.version}</version>
     </dependency>
     <!-- Resource testing support -->
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+        <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-testing</artifactId>
       <version>${dropwizard.version}</version>
     </dependency>
     <!-- HTML Freemarker views support -->
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
-      <artifactId>dropwizard-views</artifactId>
+        <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-views-freemarker</artifactId>
       <version>${dropwizard.version}</version>
     </dependency>
     <!-- REST client support for upstream data -->
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-client</artifactId>
       <version>${dropwizard.version}</version>
     </dependency>
+      <dependency>
+          <groupId>io.dropwizard</groupId>
+          <artifactId>dropwizard-assets</artifactId>
+          <version>${dropwizard.version}</version>
+      </dependency>
 
     <!-- OpenID heavy lifting -->
     <dependency>

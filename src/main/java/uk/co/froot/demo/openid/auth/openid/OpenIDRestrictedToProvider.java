@@ -6,7 +6,7 @@ import com.sun.jersey.core.spi.component.ComponentContext;
 import com.sun.jersey.core.spi.component.ComponentScope;
 import com.sun.jersey.spi.inject.Injectable;
 import com.sun.jersey.spi.inject.InjectableProvider;
-import com.yammer.dropwizard.auth.Authenticator;
+import io.dropwizard.auth.Authenticator;
 import uk.co.froot.demo.openid.auth.annotation.RestrictedTo;
 
 /**
